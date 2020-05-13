@@ -3,7 +3,13 @@
   let src1 = site;
   let src2 = site;
   const updateSrc = () => {
-    src1 = src2 = site;
+    if (site.slice(0, 4) !== "http") src1 = src2 = "http://" + site;
+    else src1 = src2 = site;
+  };
+  const handleKeydown = event => {
+    let key = event.key;
+    let keyCode = event.keyCode;
+    if (key === "Enter") updateSrc();
   };
 </script>
 
@@ -41,7 +47,7 @@
 </style>
 
 <h1>Device Mockups</h1>
-<input bind:value={site} />
+<input bind:value={site} on:keydown={handleKeydown} />
 <button on:click={updateSrc}>update</button>
 <div class="pixel">
   <iframe class="pixel-iframe" title="Pixel window" src={src1} />
