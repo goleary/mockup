@@ -3,7 +3,7 @@
   let src1 = site;
   let src2 = site;
   const updateSrc = () => {
-    if (site.slice(0, 4) !== "http") src1 = src2 = "http://" + site;
+    if (site.slice(0, 4) !== "http") src1 = src2 = "https://" + site;
     else src1 = src2 = site;
   };
   const handleKeydown = event => {
